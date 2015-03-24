@@ -6,18 +6,19 @@
 	<display-name>Vote No Livro - Aqui você decide.</display-name>
 
 	<servlet>
-		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-name>spring</servlet-name>
 		<url-pattern>/pages/*</url-pattern>
 	</servlet-mapping>
 	<!-- Config Log4j Spring -->
-	<context-param>
-		<param-name>log4jConfigLocation</param-name>
-		<param-value>classpath:log4j.xml</param-value>
-	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-context.xml</param-value>

@@ -28,12 +28,19 @@
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/testeSpringData?createDatabaseIfNotExist=true" />
-		<property name="username" value="root" />
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:voteNoLivro;create=true" />
+		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
+	<!--bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" value="jdbc:derby:memory:voteNoLivro;create=true" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean-->
+
 
 	<import resource="classpath*:spring-data-config.xml" />
 

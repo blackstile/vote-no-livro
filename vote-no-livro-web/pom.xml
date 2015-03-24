@@ -9,10 +9,17 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>vote-no-livro-web</artifactId>
+	<properties>
+		<applicationContext>/vote-no-livro</applicationContext>
+	</properties>
 	<packaging>war</packaging>
 	<name>vote-no-livro-web</name>
 	<url>http://www.developerstools.com.br</url>
 	<dependencies>
+		<dependency>
+			<groupId>br.com.jesus.miranda.william</groupId>
+			<artifactId>vote-no-livro-services</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -21,9 +28,13 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -72,12 +83,20 @@
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<warName>${project.artifactId}</warName>
+					<webResources>
+                    <resource>
+                        <filtering>true</filtering>
+                        <targetPath>WEB-INF/classes</targetPath>
+                        <directory>src/main/resources</directory>
+                    </resource>
+                </webResources>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
+					<jvmArgs>-Xmx1024m -Xms1024m</jvmArgs>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<stopKey>foo</stopKey>
 					<stopPort>9999</stopPort>
@@ -87,7 +106,9 @@
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
-					<contextPath>/developers-tools</contextPath>
+					<webApp>
+						<contextPath>${applicationContext}</contextPath>
+					</webApp>
 				</configuration>
 			</plugin>
 		</plugins>

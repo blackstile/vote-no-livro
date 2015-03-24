@@ -18,5 +18,9 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>br.com.jesus.miranda.william</groupId>
+    	<artifactId>vote-no-livro-repository</artifactId>
+    </dependency>
   </dependencies>
 </project>

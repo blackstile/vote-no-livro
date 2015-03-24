@@ -8,7 +8,7 @@
 	<name>vote-no-livro</name>
 	<url>http://www.developerstools.com.br</url>
 	<properties>
-		<spring.version>4.1.5.RELEASE</spring.version>
+		<spring.version>4.0.2.RELEASE</spring.version>
 		<jackson.mapper.version>1.9.9</jackson.mapper.version>
 		<hibernate.validator.version>5.1.0.Final</hibernate.validator.version>
 		<javaee.api.version>6.0</javaee.api.version>
@@ -18,6 +18,21 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>br.com.jesus.miranda.william</groupId>
+				<artifactId>vote-no-livro-beans</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.jesus.miranda.william</groupId>
+				<artifactId>vote-no-livro-repository</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.jesus.miranda.william</groupId>
+				<artifactId>vote-no-livro-services</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
 			<!-- Spring Framework -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -72,6 +87,11 @@
 				<artifactId>commons-lang</artifactId>
 				<version>2.3</version>
 			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
 			<!-- Jackson Mapper -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
@@ -92,15 +112,21 @@
 				<version>${javaee.api.version}</version>
 				<scope>provided</scope>
 			</dependency>
-
-			<dependency>
-				<groupId>javax.inject</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>1</version>
-			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+				<version>1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 	<modules>
 		<module>vote-no-livro-beans</module>
 		<module>vote-no-livro-services</module>

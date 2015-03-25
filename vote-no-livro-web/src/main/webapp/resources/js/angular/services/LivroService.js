@@ -9,7 +9,7 @@ angular.module('LivroService', ['ngResource'])
 		      params: {
 		  			action: 'disputa'
 		      }
-		}
+		  }
 	  });
 	}]);
 

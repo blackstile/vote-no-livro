@@ -37,6 +37,7 @@ public class DatabaseInitializeServiceImpl implements DatabaseInitializeService{
 								.imagemPath("jsf-jpa-featured_large.png");
 			livroRepository.save(livro);
 		}
+		
 		{
 			Livro livro = new Livro()
 								.titulo("Agile: Desenvolvimento de software com entregas frequentes e foco no valor de negócio")
@@ -44,6 +45,7 @@ public class DatabaseInitializeServiceImpl implements DatabaseInitializeService{
 								.imagemPath("agile-featured_large.png");
 			livroRepository.save(livro);
 		}
+		
 		{
 			Livro livro = new Livro()
 								.titulo("Thoughtworks Antologia Brasil: Histórias de aprendizado e inovação")

@@ -12,7 +12,7 @@ import br.com.jesus.miranda.william.votenolivro.beans.Livro;
 
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 
-	@Query("Select new br.com.jesus.miranda.william.votenolivro.beans.Combinacao(l1.id, l2.id) from Livro l1, Livro l2 where l1 <> l2")
+	@Query("Select new br.com.jesus.miranda.william.votenolivro.beans.Combinacao(l1.id, l2.id) from Livro l1, Livro l2 where l1 <> l2 and l1.id < l2.id")
 	List<Combinacao> getCombinacoes();
 	
 	@Query("Select new br.com.jesus.miranda.william.votenolivro.beans.Disputa(l1, l2) from Livro l1, Livro l2 where l1.id = :idLivro1 and l2.id = :idLivro2")

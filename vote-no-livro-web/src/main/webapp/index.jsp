@@ -26,6 +26,8 @@
 <script type="text/javascript" src='<spring:url value="/resources/js/angular/services/LivroService.js" />'></script>
 <script type="text/javascript" src='<spring:url value="/resources/js/angular/controllers/VotoController.js" />'></script>
 <script type="text/javascript" src='<spring:url value="/resources/js/angular/services/VotoService.js" />'></script>
+<script type="text/javascript" src='<spring:url value="/resources/js/angular/controllers/UsuarioController.js" />'></script>
+<script type="text/javascript" src='<spring:url value="/resources/js/angular/services/UsuarioService.js" />'></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
@@ -43,6 +45,11 @@ img.desaturate{
 -webkit-filter: grayscale(1); -webkit-filter: grayscale(100%);
 filter: gray; filter: grayscale(100%);
 filter: url(desaturate.svg#greyscale);
+}
+.description{
+	margin-left:3px;
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif";
+	
 }
 </style>
 </head>
@@ -81,18 +88,18 @@ filter: url(desaturate.svg#greyscale);
 							<div class="caption">
 								<h3>{{disputa.livro1.titulo}}</h3>
 							</div>
-							<img style="float: left" width="200" height="200" data-ng-class="{desaturate : disputa.perdedor1}" src='<spring:message code="livro.images.path" />/{{disputa.livro1.imagem}}' />
-							<p>{{disputa.livro1.descricao}}</p>
-							<div style="clear: both"></div>
+							<img style="float: left; width:200px; height:300px;" class="img-thumbnail" data-ng-class="{desaturate : disputa.perdedor1}" src='<spring:message code="livro.images.path" />/{{disputa.livro1.imagem}}' />
+							<p class="description">{{disputa.livro1.descricao}}</p>
 							<p class="text-center">
 								<a href="#" data-ng-click="configurarPerdedor(disputa, disputa.livro1)"
 									class="btn btn-primary" data-role="button"><i
 									class="glyphicon glyphicon-thumbs-up"></i> Votar</a>
 							</p>
+							<div style="clear: both"></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<div class="vertical-center" style="height: 280px">
+						<div class="vertical-center" style="height: 300px">
 							<h1 class="hcenter">VS</h1>
 						</div>
 						<div style="clear: both"></div>
@@ -102,32 +109,32 @@ filter: url(desaturate.svg#greyscale);
 							<div class="caption">
 								<h3>{{disputa.livro2.titulo}}</h3>
 							</div>
-							<img style="float: left" width="200" height="200" data-ng-class="{desaturate : disputa.perdedor2}"src='<spring:message code="livro.images.path" />/{{disputa.livro2.imagem}}' />
-							<p>{{disputa.livro2.descricao}}</p>
-							<div style="clear: both"></div>
+							<img style="float: left; width:200px; height:300px;" class="img-thumbnail" data-ng-class="{desaturate : disputa.perdedor2}"src='<spring:message code="livro.images.path" />/{{disputa.livro2.imagem}}' />
+							<p class="description">{{disputa.livro2.descricao}}</p>
 							<p class="text-center">
 								<a href="#" data-ng-click="configurarPerdedor(disputa, disputa.livro2)" class="btn btn-primary pull-center" data-role="button">
 								<i class="glyphicon glyphicon-thumbs-up"></i> Votar
 								</a>
 							</p>
+							<div style="clear: both"></div>
 						</div>
 					</div>
 					<div style="clear: both"></div>
 				</div>
 			</div>
-			<modal title="Obrigado por participar!" visible="showModal">
-				<form data-role="form">
+			<modal title="Obrigado por participar!" visible="showModal" >
+				<form data-role="form" data-ng-controller="UsuarioController">
 					<div class="form-group">
-						<label for="nome">Nome</label> <input type="text"
+						<label for="nome">Nome</label> <input type="text" data-ng-model="usuario.nome"
 							class="form-control" id="nome" placeholder="Digite seu nome" />
 					</div>
 					<div class="form-group">
-						<label for="email">Email address</label> <input type="email" class="form-control" id="email" placeholder="seu-email@test.com" />
+						<label for="email">Email address</label> <input type="email" data-ng-model="usuario.email" class="form-control" id="email" placeholder="seu-email@test.com" />
 					</div>
-					<button type="submit" class="btn btn-primary">Enviar</button>
+					<div id="usuario-alerta-sucesso" class="alert alert-success" style="display: none" role="alert">Dados salvo com sucesso</div>
+					<button type="submit" class="btn btn-primary" data-ng-click="salvarUsuario(usuario)">Enviar</button>
 				</form>
 			</modal>
-		<button data-ng-click="toggleModal()" class="btn btn-default">Open modal</button>
 		</article>
 	</section>
 	<script type="text/ng-template" id="modal.html">

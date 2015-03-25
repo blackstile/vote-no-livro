@@ -1,13 +1,9 @@
-var moduleModal = angular.module('moduleModal', []);
-
 voteNoLivroApp.controller('ModalController', function ($scope, $rootScope) {
 	$rootScope.showModal = false;
 	$rootScope.toggleModal = function(){
 		$rootScope.showModal = !$rootScope.showModal;
     };
-  });
-
-voteNoLivroApp.directive('modal', function () {
+  }).directive('modal', function () {
     return {
       templateUrl: 'modal.html',
       restrict: 'E',

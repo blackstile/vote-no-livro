@@ -24,6 +24,8 @@
 <script type="text/javascript" src='<spring:url value="/resources/js/angular/controllers/ModalController.js" />'></script>
 <script type="text/javascript" src='<spring:url value="/resources/js/angular/controllers/LivroController.js" />'></script>
 <script type="text/javascript" src='<spring:url value="/resources/js/angular/services/LivroService.js" />'></script>
+<script type="text/javascript" src='<spring:url value="/resources/js/angular/controllers/VotoController.js" />'></script>
+<script type="text/javascript" src='<spring:url value="/resources/js/angular/services/VotoService.js" />'></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
@@ -79,8 +81,8 @@
 							<p>{{disputa.livro1.descricao}}</p>
 							<div style="clear: both"></div>
 							<p class="text-center">
-								<a href="#" data-ng-click="votar({{disputa.livro1.id}})"
-									class="btn btn-primary" role="button"><i
+								<a href="#" data-ng-click="votar(disputa, disputa.livro1)"
+									class="btn btn-primary" data-role="button"><i
 									class="glyphicon glyphicon-thumbs-up"></i> Votar</a>
 							</p>
 						</div>
@@ -101,9 +103,9 @@
 							<p>{{disputa.livro2.descricao}}</p>
 							<div style="clear: both"></div>
 							<p class="text-center">
-								<a href="#" data-ng-click="votar(disputa, disputa.livro2.id)"
-									class="btn btn-primary pull-center" role="button"><i
-									class="glyphicon glyphicon-thumbs-up"></i> Votar</a>
+								<a href="#" data-ng-click="votar(disputa, disputa.livro2)" class="btn btn-primary pull-center" data-role="button">
+								<i class="glyphicon glyphicon-thumbs-up"></i> Votar
+								</a>
 							</p>
 						</div>
 					</div>

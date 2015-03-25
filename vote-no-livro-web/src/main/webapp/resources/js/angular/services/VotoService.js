@@ -1,14 +1,14 @@
 var modulo = angular.module('VotoService', ['ngResource']);
 
 modulo.factory('VotoService', ['$resource', function($resource) {
-  return $resource('pages/livro/:action/:id', 
+  return $resource('/vote-no-livro/pages/voto/:action/:id', 
   {}, 
   {
 	  votar : {
-	      method: 'post',
+	      method: 'POST',
 	      isArray: false,
 	      params: {
-	  			action: 'votar'
+	  			action: 'salvar'
 	      }
 	}
   });

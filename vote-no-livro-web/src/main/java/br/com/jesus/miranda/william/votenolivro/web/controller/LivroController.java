@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.jesus.miranda.william.votenolivro.beans.Combinacao;
 import br.com.jesus.miranda.william.votenolivro.beans.Disputa;
-import br.com.jesus.miranda.william.votenolivro.services.LivroService;
+import br.com.jesus.miranda.william.votenolivro.services.impl.LivroServiceImpl;
 
 @RestController
 @RequestMapping(value="/livro")
@@ -23,7 +23,7 @@ public class LivroController {
 	
 	
 	@Autowired 
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	
 	@Autowired
 	private HttpSession session;

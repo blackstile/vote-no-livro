@@ -1,4 +1,4 @@
- voteNoLivroApp.controller("LivroController",function($scope,$rootScope,LivroService,ApplicationService){
+ voteNoLivroApp.controller("LivroController",function($scope,$rootScope,LivroService, ApplicationService){
 	$scope.disputa = {};	
 	$scope.getLivrosDisputa = function(){		
 		$rootScope.toggleModal = true;
@@ -6,6 +6,7 @@
 							 	function(response, status){
 									$scope.disputa = response;
 									if ($scope.disputa.livro1 == undefined){
+										alert('nao tem mais disputa');
 									}
 								},
 								function(error){
@@ -14,9 +15,11 @@
 								}
 		);
 	};
+	
 	$scope.chamaFormEmail =  function(){
 		alert('Formulario email');
 	};
+	
 	$scope.initData =  function(){
 		ApplicationService.init({},
 								function(response){

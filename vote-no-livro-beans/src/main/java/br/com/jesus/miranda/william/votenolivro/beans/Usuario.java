@@ -41,5 +41,15 @@ public class Usuario extends BaseEntity{
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public Usuario email(String email){
+		setEmail(email);
+		return this;
+	}
+	
+	public Usuario nome(String nome){
+		setNome(nome);
+		return this;
+	}
 
 }

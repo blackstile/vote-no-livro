@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.jesus.miranda.william.votenolivro.beans.Usuario;
-import br.com.jesus.miranda.william.votenolivro.services.UsuarioService;
+import br.com.jesus.miranda.william.votenolivro.services.impl.UsuarioServiceImpl;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private UsuarioServiceImpl usuarioService;
 	
 	@RequestMapping(value="save" , method=RequestMethod.POST)
 	public void save (Usuario usuario){

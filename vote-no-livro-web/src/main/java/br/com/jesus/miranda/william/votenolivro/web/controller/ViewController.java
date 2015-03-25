@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.jesus.miranda.william.votenolivro.services.DatabaseInitializeService;
+import br.com.jesus.miranda.william.votenolivro.services.impl.DatabaseInitializeServiceImpl;
 
 @Controller
 @RequestMapping(value="/view")
 public class ViewController {
 	
 	@Autowired
-	DatabaseInitializeService databaseInit;
+	DatabaseInitializeServiceImpl databaseInit;
 	
 	@RequestMapping(value="/init")
 	public void init(HttpServletResponse response){

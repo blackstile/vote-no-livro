@@ -1,8 +1,9 @@
 package br.com.jesus.miranda.william.votenolivro.web.controller;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.jesus.miranda.william.votenolivro.beans.Combinacao;
 import br.com.jesus.miranda.william.votenolivro.beans.Ranking;
@@ -26,11 +28,14 @@ public class VotoController {
 	private HttpSession session;
 	
 	@Autowired
+	private HttpServletRequest request;
+	
+	@Autowired
 	private VotoService votoService;
-	 
+	
 	
 	@RequestMapping(value="salvar", method=RequestMethod.POST)
-	public boolean votar(@RequestBody Voto voto){
+	public @ResponseBody boolean votar(@RequestBody Voto voto, ModelAndView model){
 		boolean saved = votoService.save(voto);
 		if(saved){
 			removeCombinacao();
@@ -44,11 +49,17 @@ public class VotoController {
 		return votoService.getRanking();
 	}
 
+	@RequestMapping(value="nova-votacao", method=RequestMethod.GET)
+	public void novaVotacao(){
+		session.removeAttribute("listaCombinacoes");
+	}
+	
 	private void gerenciarMeusVotos(Voto voto) {
 		List<Voto> meusVotos = (List<Voto>) session.getAttribute("meusVotos");
 		if (meusVotos == null){
-			meusVotos = Arrays.asList(voto);
+			meusVotos = new ArrayList<Voto>();
 		}
+		meusVotos.add(voto);
 		session.setAttribute("meusVotos", meusVotos);
 	}
 
@@ -58,5 +69,4 @@ public class VotoController {
 			listaCombinacao.remove(0);
 		}
 	}
-	
 }

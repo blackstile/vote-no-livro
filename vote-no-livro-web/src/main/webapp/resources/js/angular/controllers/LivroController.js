@@ -1,12 +1,15 @@
- voteNoLivroApp.controller("LivroController",function($scope,$rootScope,LivroService, ApplicationService){
-	$scope.disputa = {};	
-	$scope.getLivrosDisputa = function(){		
-		$rootScope.toggleModal = true;
+ voteNoLivroApp.controller("LivroController",function($scope,$rootScope,LivroService, ApplicationService, VotoService){
+	
+	 $rootScope.disputa = {};	
+	
+	 $rootScope.getLivrosDisputa = function(){		
 		LivroService.getLivrosDisputa({},
-							 	function(response, status){
-									$scope.disputa = response;
-									if ($scope.disputa.livro1 == undefined){
-										alert('nao tem mais disputa');
+							 	function(response){
+									var novaDisputa = response;
+									if (novaDisputa.livro1 == undefined){
+										$scope.liberaNovaVotacao($scope.chamaFormEmail());
+									}else{
+										$rootScope.disputa = novaDisputa;										
 									}
 								},
 								function(error){
@@ -17,12 +20,24 @@
 	};
 	
 	$scope.chamaFormEmail =  function(){
-		alert('Formulario email');
+		$rootScope.toggleModal();
+	};
+	
+	$scope.liberaNovaVotacao = function(callback){
+		VotoService.novaVotacao({},
+				function(success,callback){
+					callback();
+				},
+				function(error){
+					alert('Erro ao tentar liberar nova votação');
+				}
+		);
 	};
 	
 	$scope.initData =  function(){
 		ApplicationService.init({},
 								function(response){
+									$scope.getLivrosDisputa();
 								},
 								function(error){
 									alert('Erro ao tentar inicializar os dados dos livros.');
@@ -32,5 +47,4 @@
 		);
 	};
 	$scope.initData();
-	$scope.getLivrosDisputa();
 });

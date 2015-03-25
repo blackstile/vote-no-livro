@@ -39,6 +39,11 @@
 	text-align: center;
 	margin: 0 auto;
 }
+img.desaturate{
+-webkit-filter: grayscale(1); -webkit-filter: grayscale(100%);
+filter: gray; filter: grayscale(100%);
+filter: url(desaturate.svg#greyscale);
+}
 </style>
 </head>
 <body>
@@ -68,7 +73,7 @@
 		</nav>
 	</header>
 	<section data-ng-controller="LivroController">
-		<article data-ng-controller="ModalController">
+		<article>
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="col-md-5" data-ng-controller="VotoController">
@@ -76,12 +81,11 @@
 							<div class="caption">
 								<h3>{{disputa.livro1.titulo}}</h3>
 							</div>
-							<img style="float: left" width="200" height="200"
-								src='<spring:message code="livro.images.path" />/{{disputa.livro1.imagem}}' />
+							<img style="float: left" width="200" height="200" data-ng-class="{desaturate : disputa.perdedor1}" src='<spring:message code="livro.images.path" />/{{disputa.livro1.imagem}}' />
 							<p>{{disputa.livro1.descricao}}</p>
 							<div style="clear: both"></div>
 							<p class="text-center">
-								<a href="#" data-ng-click="votar(disputa, disputa.livro1)"
+								<a href="#" data-ng-click="configurarPerdedor(disputa, disputa.livro1)"
 									class="btn btn-primary" data-role="button"><i
 									class="glyphicon glyphicon-thumbs-up"></i> Votar</a>
 							</p>
@@ -98,12 +102,11 @@
 							<div class="caption">
 								<h3>{{disputa.livro2.titulo}}</h3>
 							</div>
-							<img style="float: left" width="200" height="200"
-								src='<spring:message code="livro.images.path" />/{{disputa.livro2.imagem}}' />
+							<img style="float: left" width="200" height="200" data-ng-class="{desaturate : disputa.perdedor2}"src='<spring:message code="livro.images.path" />/{{disputa.livro2.imagem}}' />
 							<p>{{disputa.livro2.descricao}}</p>
 							<div style="clear: both"></div>
 							<p class="text-center">
-								<a href="#" data-ng-click="votar(disputa, disputa.livro2)" class="btn btn-primary pull-center" data-role="button">
+								<a href="#" data-ng-click="configurarPerdedor(disputa, disputa.livro2)" class="btn btn-primary pull-center" data-role="button">
 								<i class="glyphicon glyphicon-thumbs-up"></i> Votar
 								</a>
 							</p>

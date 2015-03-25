@@ -5,11 +5,18 @@ modulo.factory('VotoService', ['$resource', function($resource) {
   {}, 
   {
 	  votar : {
-	      method: 'POST',
+		  method: 'POST',
+		  isArray: false,
+		  params: {
+			  action: 'salvar'
+		  }
+	  },
+	  novaVotacao : {
+	      method: 'GET',
 	      isArray: false,
 	      params: {
-	  			action: 'salvar'
+	  			action: 'nova-votacao'
 	      }
-	}
+	  }
   });
 }]);

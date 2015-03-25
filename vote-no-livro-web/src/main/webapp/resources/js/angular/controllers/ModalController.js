@@ -1,15 +1,17 @@
 voteNoLivroApp.controller('ModalController', function ($scope, $rootScope) {
-	$rootScope.showModal = false;
+	$scope.showModal = false;
 	$rootScope.toggleModal = function(){
-		$rootScope.showModal = !$rootScope.showModal;
+		$scope.showModal = !$scope.showModal;
+//		console.log($scope.showModal);
     };
-  }).directive('modal', function () {
+  }).directive('modal', function ($rootScope) {
     return {
       templateUrl: 'modal.html',
       restrict: 'E',
       transclude: true,
       replace:true,
       scope:true,
+      controller: 'ModalController',
       link: function postLink(scope, element, attrs) {
         scope.title = attrs.title;
 
@@ -29,6 +31,7 @@ voteNoLivroApp.controller('ModalController', function ($scope, $rootScope) {
         $(element).on('hidden.bs.modal', function(){
           scope.$apply(function(){
             scope.$parent[attrs.visible] = false;
+            $rootScope.toggleModal();
           });
         });
       }

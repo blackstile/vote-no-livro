@@ -54,7 +54,7 @@ public class LivroController {
 		Disputa disputa = null;
 		List<Combinacao> listaCombinacao =  getCombinacoes();
 		if (listaCombinacao != null && !listaCombinacao.isEmpty()){
-			Combinacao combinacao =  listaCombinacao.remove(0);
+			Combinacao combinacao =  listaCombinacao.get(0);
 			disputa =  livroService.getDisputa(combinacao.getIdLivro1(), combinacao.getIdLivro2());
 		}
 		return disputa;

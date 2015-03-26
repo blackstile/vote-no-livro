@@ -1,5 +1,7 @@
 package br.com.jesus.miranda.william.votenolivro.web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ public class UsuarioController {
 	private UsuarioServiceImpl usuarioService;
 	
 	@RequestMapping(value="/save" , method=RequestMethod.POST)
-	public void save (@RequestBody Usuario usuario){
+	public void save (@RequestBody @Valid Usuario usuario){
 		usuarioService.save(usuario);
 	}
 	

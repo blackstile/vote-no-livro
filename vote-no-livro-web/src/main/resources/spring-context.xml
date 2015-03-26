@@ -8,14 +8,15 @@
 	
 	<context:annotation-config />
 	<context:component-scan base-package="br.com.jesus.miranda.william" annotation-config="true" />
-	<bean
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+	<!--bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
 		<property name="locations" >
 			<list>
 				<value>classpath*:application.properties</value>
 			</list>
 		</property>
-	</bean>
+	</bean-->
 	
 	<mvc:annotation-driven />
 	<!--import resource="classpath:spring-services-context.xml"/-->

@@ -15,8 +15,22 @@ modulo.factory('VotoService', ['$resource', function($resource) {
 	      method: 'GET',
 	      isArray: false,
 	      params: {
-	  			action: 'nova-votacao'
+	  			action: 'iniciar-nova-votacao'
 	      }
+	  },
+	  getRanking : {
+		  method: 'GET',
+		  isArray: true,
+		  params: {
+			  action: 'obter-ranking'
+		  }
+	  },
+	  getMeusVotos : {
+		  method: 'GET',
+		  isArray: true,
+		  params: {
+			  action: 'obter-meus-votos'
+		  }
 	  }
   });
 }]);

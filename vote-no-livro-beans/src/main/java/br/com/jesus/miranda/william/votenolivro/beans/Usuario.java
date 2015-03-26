@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Usuario extends BaseEntity{
 
@@ -18,9 +22,12 @@ public class Usuario extends BaseEntity{
 	private Long id;
 
 	@Column(nullable=false)
+	@NotBlank(message="{usuario.nome.requerido}")
 	private String nome;
 	
-	@Column(unique=true, nullable=false)
+	@Column(nullable=false)
+	@NotBlank(message="{usuario.email.requerido}")
+	@Email(message="{usuario.email.invalido}")
 	private String email;
 	
 	public String getNome() {

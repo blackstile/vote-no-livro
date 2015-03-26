@@ -19,7 +19,9 @@ public class DatabaseInitializeServiceImpl implements DatabaseInitializeService{
 	
 	public void insertLivros(){
 		Long total = livroRepository.count();
-		log.info("Tota de Livros Cadastrados: " + total);
+		if (log.isDebugEnabled()){
+			log.debug(String.format("Total de Livros Cadastrados: ", total));
+		}
 		if (total > 0){
 			return ;
 		}
@@ -60,6 +62,7 @@ public class DatabaseInitializeServiceImpl implements DatabaseInitializeService{
 								.imagemPath("soa-webservices-featured_large.png");
 			livroRepository.save(livro);
 		}
+		
 	}
 	
 }

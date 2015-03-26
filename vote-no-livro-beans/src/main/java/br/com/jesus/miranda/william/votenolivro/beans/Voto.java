@@ -54,4 +54,16 @@ public class Voto extends BaseEntity{
 		return id;
 	}
 	
+	public Voto primeiraOpcao(Livro opcao) {
+		setPrimeiraOpcao(opcao);
+		return this;
+	}
+	public Voto segundaOpcao(Livro opcao) {
+		setSegundaOpcao(opcao);
+		return this;
+	}
+	public Voto opcaoEscolhida(Livro opcao) {
+		setOpcaoEscolhida(opcao);
+		return this;
+	}
 }

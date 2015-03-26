@@ -56,7 +56,10 @@ public class Livro extends BaseEntity{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	public Livro id(Long id){
+		setId(id);
+		return this;
+	}
 	public Livro titulo(String titulo) {
 		setTitulo(titulo);
 		return this;

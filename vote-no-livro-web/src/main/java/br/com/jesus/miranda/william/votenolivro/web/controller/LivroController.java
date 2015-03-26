@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.jesus.miranda.william.votenolivro.beans.Combinacao;
 import br.com.jesus.miranda.william.votenolivro.beans.Disputa;
 import br.com.jesus.miranda.william.votenolivro.services.impl.LivroServiceImpl;
+import br.com.jesus.miranda.william.votenolivro.web.util.LogUtil;
 
 @RestController
 @RequestMapping(value="/livro")
 public class LivroController {
 	
+	private static final LogUtil log = LogUtil.getLog(LivroController.class);
 	
 	@Autowired 
 	private LivroServiceImpl livroService;
@@ -34,6 +36,7 @@ public class LivroController {
 		if (disputa == null){
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
+		log.debug(String.format("Próxima Disputa : %s", disputa));
 		return disputa;
 	}
 
@@ -42,11 +45,12 @@ public class LivroController {
 		List<Combinacao> listaCombinacao = (List<Combinacao>) session.getAttribute("listaCombinacoes");
 		if (listaCombinacao == null){
 			listaCombinacao =  livroService.getCombinacoes();
+			if (listaCombinacao != null && !listaCombinacao.isEmpty()){
+				Collections.shuffle(listaCombinacao);
+				session.setAttribute("listaCombinacoes", listaCombinacao);
+			}
 		}
-		if (listaCombinacao != null && !listaCombinacao.isEmpty()){
-			Collections.shuffle(listaCombinacao);
-			session.setAttribute("listaCombinacoes", listaCombinacao);
-		}
+		log.debug("Lista d Combinação Atual: %s", listaCombinacao);
 		return  listaCombinacao;
 	}
 	

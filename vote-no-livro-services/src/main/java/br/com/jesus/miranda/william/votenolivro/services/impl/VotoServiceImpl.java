@@ -2,10 +2,9 @@ package br.com.jesus.miranda.william.votenolivro.services.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jesus.miranda.william.votenolivro.beans.Ranking;
 import br.com.jesus.miranda.william.votenolivro.beans.Voto;

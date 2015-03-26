@@ -174,8 +174,8 @@ filter: url(desaturate.svg#greyscale);
 					<label for="email">Email address</label> <input type="email" required data-ng-model="usuario.email" class="form-control" id="email" placeholder="seu-email@test.com" />
 				</div>
 				<div id="usuario-alerta-sucesso" class="alert alert-success" style="display: none" role="alert">Dados salvo com sucesso</div>
-				<div class="alert alert-info" id="message-close" style="display: none" role="alert"></div>
-				<button type="submit" class="btn btn-primary" data-ng-click="salvarUsuario(usuario)">Enviar</button>
+				<p class="label label-info" id="message-close" style="display: none"></p>
+				<button type="submit" class="btn btn-primary" data-ng-disabled="userForm.$invalid" data-ng-click="userForm.$valid && salvarUsuario(usuario)">Enviar</button>
 			</form>
 		</modal>
 	</section>

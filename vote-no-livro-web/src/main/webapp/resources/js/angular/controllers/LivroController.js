@@ -23,6 +23,7 @@ voteNoLivroApp.controller("LivroController",
 			};
 
 			$scope.chamaFormEmail = function() {
+				$rootScope.visualizarRanking();
 				$rootScope.toggleModal();
 			};
 

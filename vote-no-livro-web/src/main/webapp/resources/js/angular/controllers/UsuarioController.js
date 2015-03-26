@@ -15,7 +15,7 @@ voteNoLivroApp.controller('UsuarioController', function($scope, $rootScope, $tim
 								
 								iclose = $interval(function(){
 									angular.element('#message-close').show();
-									angular.element('#message-close').text("A vai fechar em " +  (--count) + " segundos");
+									angular.element('#message-close').text("A janela vai fechar em " +  (--count) + " segundos");
 									if (count == 0){
 										if (iclose){
 											$interval.cancel(iclose);
